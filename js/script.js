@@ -10,6 +10,7 @@ const jump = () => {
   }, 500);
 };
 let pontuation = 0
+score.innerHTML = pontuation
 
 const loopGame = setInterval(() => {
   const pipePosition = pipe.offsetLeft;
@@ -29,17 +30,17 @@ const loopGame = setInterval(() => {
     mario.style.marginLeft = "45px";
 
     clearInterval(loopGame);
-  } else if (pipePosition <= 120 && pipePosition > 0 && marioPosition > 80){
-    pontuation += 1
-    score.innerHTML = pontuation
-    
-  }
+  } 
 }, 10);
 
+function scoreImplement() {
+    pontuation += 1
+      
+}
+
 document.addEventListener("keydown", jump);
+document.addEventListener("mousedown", jump);
+document.addEventListener("touchstart", jump);
 
-// const scoreImplement = () => {
-//     score.innerHTML(s++)
-// }
 
-// document.addEventListener("keydown", scoreImplement);
+// mario.addEventListener("animationend", scoreImplement)
