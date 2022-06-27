@@ -1,6 +1,9 @@
 const mario = document.querySelector(".super-mario");
 const pipe = document.querySelector(".pipe-game");
 const score = document.querySelector(".score-number");
+const gameOverScreen = document.querySelector("#game-over");
+const retryButton = document.querySelector(".game-button");
+const startButton = document.querySelector(".start-button");
 
 let gameScore = 0;
 score.innerHTML = gameScore;
@@ -33,6 +36,8 @@ const loopGame = setInterval(() => {
     mario.style.width = "75px";
     mario.style.marginLeft = "45px";
 
+    gameOverScreen.style.visibility = "visible";
+
  
     clearInterval(loopGame);
   } 
@@ -52,15 +57,31 @@ const scoreGame = setInterval(() => {
       
       clearInterval(scoreGame);
 
-  } else if (pipePosition <= 120 && pipePosition > 0 && marioPosition > 80) {
+  } else/* if (pipePosition <= 120 && pipePosition > 0 && marioPosition > 80)*/ {
     gameScore += 1;
       score.innerHTML = gameScore;
   }
 
 }, 300);
 
+const restart = (() => {
+  gameOverScreen.style.visibility = "hidden"
+  gameScore = 0;
+  window.location.reload();
+
+});
+
+// const startGame = (() => {
+//   window.location.href = "index.html"
+// });
+
 
 
 document.addEventListener("keydown", jump);
 document.addEventListener("mousedown", jump);
 document.addEventListener("touchstart", jump);
+
+
+retryButton.addEventListener("click", restart);
+
+// startButton.addEventListener("click", startGame);
